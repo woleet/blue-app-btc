@@ -52,15 +52,8 @@ unsigned char const DISPATCHER_CLA[] = {
     BTCHIP_CLA, // btchip_apdu_get_operation_mode,
     BTCHIP_CLA, // btchip_apdu_set_operation_mode,
     BTCHIP_CLA, // btchip_apdu_get_wallet_public_key,
-    BTCHIP_CLA, // btchip_apdu_get_trusted_input,
-    BTCHIP_CLA, // btchip_apdu_hash_input_start,
-    BTCHIP_CLA, // btchip_apdu_hash_sign,
-    BTCHIP_CLA, // btchip_apdu_hash_input_finalize_full,
     BTCHIP_CLA, // btchip_apdu_sign_message,
     BTCHIP_CLA, // btchip_apdu_get_random,
-    BTCHIP_CLA, // btchip_apdu_get_firmware_version,
-    BTCHIP_CLA, // btchip_apdu_set_alternate_coin_version
-    BTCHIP_CLA, // btchip_apdu_get_coin_version
 };
 
 unsigned char const DISPATCHER_INS[] = {
@@ -69,15 +62,8 @@ unsigned char const DISPATCHER_INS[] = {
     BTCHIP_INS_GET_OPERATION_MODE,       // btchip_apdu_get_operation_mode,
     BTCHIP_INS_SET_OPERATION_MODE,       // btchip_apdu_set_operation_mode,
     BTCHIP_INS_GET_WALLET_PUBLIC_KEY,    // btchip_apdu_get_wallet_public_key,
-    BTCHIP_INS_GET_TRUSTED_INPUT,        // btchip_apdu_get_trusted_input,
-    BTCHIP_INS_HASH_INPUT_START,         // btchip_apdu_hash_input_start,
-    BTCHIP_INS_HASH_SIGN,                // btchip_apdu_hash_sign,
-    BTCHIP_INS_HASH_INPUT_FINALIZE_FULL, // btchip_apdu_hash_input_finalize_full,
     BTCHIP_INS_SIGN_MESSAGE,             // btchip_apdu_sign_message,
     BTCHIP_INS_GET_RANDOM,               // btchip_apdu_get_random,
-    BTCHIP_INS_GET_FIRMWARE_VERSION,     // btchip_apdu_get_firmware_version,
-    BTCHIP_INS_SET_ALTERNATE_COIN_VER, // btchip_apdu_set_alternate_coin_version
-    BTCHIP_INS_GET_COIN_VER,           // btchip_apdu_get_coin_version
 };
 
 unsigned char const DISPATCHER_DATA_IN[] = {
@@ -86,15 +72,8 @@ unsigned char const DISPATCHER_DATA_IN[] = {
     0, // btchip_apdu_get_operation_mode,
     1, // btchip_apdu_set_operation_mode,
     1, // btchip_apdu_get_wallet_public_key,
-    1, // btchip_apdu_get_trusted_input,
-    1, // btchip_apdu_hash_input_start,
-    1, // btchip_apdu_hash_sign,
-    1, // btchip_apdu_hash_input_finalize_full,
     1, // btchip_apdu_sign_message,
     0, // btchip_apdu_get_random,
-    0, // btchip_apdu_get_firmware_version,
-    1, // btchip_apdu_set_alternate_coin_version
-    0, // btchip_apdu_get_coin_version
 };
 
 apduProcessingFunction const DISPATCHER_FUNCTIONS[] = {
@@ -103,13 +82,6 @@ apduProcessingFunction const DISPATCHER_FUNCTIONS[] = {
     btchip_apdu_get_operation_mode,
     btchip_apdu_set_operation_mode,
     btchip_apdu_get_wallet_public_key,
-    btchip_apdu_get_trusted_input,
-    btchip_apdu_hash_input_start,
-    btchip_apdu_hash_sign,
-    btchip_apdu_hash_input_finalize_full,
     btchip_apdu_sign_message,
     btchip_apdu_get_random,
-    btchip_apdu_get_firmware_version,
-    btchip_apdu_set_alternate_coin_version,
-    btchip_apdu_get_coin_version,
 };

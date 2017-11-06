@@ -210,6 +210,8 @@ struct btchip_context_s {
     /** Current scratch buffer */
     unsigned char *tmp;
 
+    unsigned char tmpmessaddr[20];
+
     // was previously in NVRAM
     btchip_transaction_summary_t transactionSummary;
 

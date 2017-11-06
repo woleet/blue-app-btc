@@ -122,9 +122,9 @@ unsigned short btchip_apdu_sign_message_internal() {
                             (G_io_apdu_buffer[offset + 1]);
                         offset += 2;
                     }
-                    if (btchip_context_D.transactionSummary.messageLength ==
-                        0) {
-                        L_DEBUG_APP(("Null message length\n"));
+                    if (btchip_context_D.transactionSummary.messageLength !=
+                        64) {
+                        L_DEBUG_APP(("Invalid message length\n"));
                         sw = BTCHIP_SW_INCORRECT_DATA;
                         goto discard;
                     }
@@ -168,9 +168,11 @@ unsigned short btchip_apdu_sign_message_internal() {
                     }
                     cx_hash(&btchip_context_D.transactionHashFull.header, 0,
                             G_io_apdu_buffer + offset, chunkLength, NULL);
+                    memcpy(&btchip_context_D.tmpmessaddr, G_io_apdu_buffer+offset, 5);
                     cx_hash(
                         &btchip_context_D.transactionHashAuthorization.header,
                         0, G_io_apdu_buffer + offset, chunkLength, NULL);
+
                     btchip_context_D.hashedMessageLength += chunkLength;
                     G_io_apdu_buffer[0] = 0x00;
                     if (btchip_context_D.hashedMessageLength ==
@@ -187,6 +189,9 @@ unsigned short btchip_apdu_sign_message_internal() {
                         sw = BTCHIP_SW_INCORRECT_DATA;
                         goto discard;
                     }
+                    btchip_context_D.tmpmessaddr[5] = '.';
+                    btchip_context_D.tmpmessaddr[6] = '.';
+                    memcpy(&btchip_context_D.tmpmessaddr[7], G_io_apdu_buffer+offset+26, 5);
                     cx_hash(&btchip_context_D.transactionHashFull.header, 0,
                             G_io_apdu_buffer + offset, apduLength, NULL);
                     cx_hash(
