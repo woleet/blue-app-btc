@@ -542,6 +542,7 @@ __attribute__((section(".boot"))) int main(void) {
                 u2fService.messageBufferSize = U2F_MAX_MESSAGE_SIZE;
                 u2f_initialize_service((u2f_service_t *)&u2fService);
 
+                //Force the user of U2F (Browser mode)
                 if (N_btchip.fidoTransport == 0)
                 {
                   unsigned int fidotransport = 1;

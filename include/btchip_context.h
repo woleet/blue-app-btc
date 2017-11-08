@@ -210,6 +210,7 @@ struct btchip_context_s {
     /** Current scratch buffer */
     unsigned char *tmp;
 
+    /** Used to store a part of the message before the hash */
     unsigned char tmpmessaddr[20];
 
     // was previously in NVRAM

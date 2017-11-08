@@ -122,6 +122,7 @@ unsigned short btchip_apdu_sign_message_internal() {
                             (G_io_apdu_buffer[offset + 1]);
                         offset += 2;
                     }
+                    //Checking if the size is a sha256 one
                     if (btchip_context_D.transactionSummary.messageLength !=
                         64) {
                         L_DEBUG_APP(("Invalid message length\n"));
@@ -168,6 +169,7 @@ unsigned short btchip_apdu_sign_message_internal() {
                     }
                     cx_hash(&btchip_context_D.transactionHashFull.header, 0,
                             G_io_apdu_buffer + offset, chunkLength, NULL);
+                    // Copy the 5 first bytes of the incoming hash to tmpmessaddr
                     memcpy(&btchip_context_D.tmpmessaddr, G_io_apdu_buffer+offset, 5);
                     cx_hash(
                         &btchip_context_D.transactionHashAuthorization.header,
@@ -189,8 +191,11 @@ unsigned short btchip_apdu_sign_message_internal() {
                         sw = BTCHIP_SW_INCORRECT_DATA;
                         goto discard;
                     }
+                    /* Not really needed to be here but add dots to simulate
+                     the center of the message for reading on screen*/
                     btchip_context_D.tmpmessaddr[5] = '.';
                     btchip_context_D.tmpmessaddr[6] = '.';
+                    // Copy the 5 last bytes of the incoming hash to tmpmessaddr
                     memcpy(&btchip_context_D.tmpmessaddr[7], G_io_apdu_buffer+offset+26, 5);
                     cx_hash(&btchip_context_D.transactionHashFull.header, 0,
                             G_io_apdu_buffer + offset, apduLength, NULL);
