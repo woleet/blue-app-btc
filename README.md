@@ -7,4 +7,4 @@ This application is a stripped down version of https://github.com/LedgerHQ/blue-
 
 The **Woleet.ID for NanoS** application allows users to fulfil signature requests by signing files using their Ledger Nano S.
 
-Signature requests can be created using the [Woleet ProofDesk web application](https://app.woleet.io) or the [Woleet API](https://api.woleet/io).
+Signature requests can be created using the [Woleet ProofDesk web application](https://app.woleet.io) or the [Woleet API](https://api.woleet.io).
